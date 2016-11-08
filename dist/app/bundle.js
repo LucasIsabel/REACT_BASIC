@@ -48,7 +48,7 @@
 /***/ function(module, exports) {
 
 	'use strict';
-	
+
 	console.log('It works');
 
 /***/ }
