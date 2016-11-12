@@ -61,6 +61,8 @@
 	
 	var _Home = __webpack_require__(/*! ./components/Home */ 173);
 	
+	var _Aside = __webpack_require__(/*! ./components/Aside */ 174);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -75,12 +77,42 @@
 	    function App() {
 	        _classCallCheck(this, App);
 	
-	        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+	
+	        _this.state = {
+	            homeLink: "Home",
+	            homeMounted: true
+	        };
+	        return _this;
 	    }
 	
 	    _createClass(App, [{
+	        key: "onGreet",
+	        value: function onGreet() {
+	            alert('Hello');
+	        }
+	    }, {
+	        key: "onChangeLinkName",
+	        value: function onChangeLinkName(newName) {
+	            this.setState({
+	                homeLink: newName
+	            });
+	        }
+	    }, {
+	        key: "onAlertMessage",
+	        value: function onAlertMessage() {
+	            alert('Ths is my message nigga');
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
+	            var _this2 = this;
+	
+	            var user = {
+	                name: "Lucas",
+	                hobbies: ["Sports", "Cook", "Drink", "Play Games"]
+	            };
+	
 	            return _react2.default.createElement(
 	                "div",
 	                { className: "container" },
@@ -90,7 +122,7 @@
 	                    _react2.default.createElement(
 	                        "div",
 	                        { className: "col-xs-10 col-xs-offset-1" },
-	                        _react2.default.createElement(_Header.Header, null)
+	                        _react2.default.createElement(_Header.Header, { homeLink: this.state.homeLink })
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -99,7 +131,25 @@
 	                    _react2.default.createElement(
 	                        "div",
 	                        { className: "col-xs-10 col-xs-offset-1" },
-	                        _react2.default.createElement(_Home.Home, null)
+	                        _react2.default.createElement(_Home.Home, {
+	                            name: "Max",
+	                            initialAge: 27,
+	                            user: user,
+	                            greet: this.onGreet,
+	                            changeLink: function changeLink() {
+	                                return _this2.onChangeLinkName(_this2.state.homeLink);
+	                            },
+	                            initialLinkName: this.state.homeLink
+	                        })
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "row" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "col-xs-10 col-xs-offset-1" },
+	                        _react2.default.createElement(_Aside.Aside, { action: this.onAlertMessage, btnName: "Botao ASIDE" })
 	                    )
 	                )
 	            );
@@ -22005,62 +22055,40 @@
 	});
 	exports.Header = undefined;
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var Header = exports.Header = function Header(props) {
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Header = exports.Header = function (_React$Component) {
-	    _inherits(Header, _React$Component);
-	
-	    function Header() {
-	        _classCallCheck(this, Header);
-	
-	        return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
-	    }
-	
-	    _createClass(Header, [{
-	        key: "render",
-	        value: function render() {
-	            return _react2.default.createElement(
-	                "nav",
-	                { className: "navbar navbar-default" },
+	    return _react2.default.createElement(
+	        "nav",
+	        { className: "navbar navbar-default" },
+	        _react2.default.createElement(
+	            "div",
+	            { className: "container" },
+	            _react2.default.createElement(
+	                "div",
+	                { className: "navbar-header" },
 	                _react2.default.createElement(
-	                    "div",
-	                    { className: "container" },
+	                    "ul",
+	                    { className: "nav navbar-nav" },
 	                    _react2.default.createElement(
-	                        "div",
-	                        { className: "navbar-header" },
+	                        "li",
+	                        null,
 	                        _react2.default.createElement(
-	                            "ul",
-	                            { className: "nav navbar-nav" },
-	                            _react2.default.createElement(
-	                                "li",
-	                                null,
-	                                _react2.default.createElement(
-	                                    "a",
-	                                    { href: "#" },
-	                                    " Home "
-	                                )
-	                            )
+	                            "a",
+	                            { href: "#" },
+	                            props.homeLink
 	                        )
 	                    )
 	                )
-	            );
-	        }
-	    }]);
-	
-	    return Header;
-	}(_react2.default.Component);
+	            )
+	        )
+	    );
+	};
 
 /***/ },
 /* 173 */
@@ -22084,6 +22112,8 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -22093,29 +22123,229 @@
 	var Home = exports.Home = function (_React$Component) {
 	    _inherits(Home, _React$Component);
 	
-	    function Home() {
+	    function Home(props) {
 	        _classCallCheck(this, Home);
 	
-	        return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+	
+	        _this.state = _defineProperty({
+	            age: props.initialAge,
+	            name: props.name,
+	            hobbies: props.user.hobbies,
+	            name_user: props.user.name,
+	            homeLink: "Changed link",
+	            status: 0
+	        }, "homeLink", props.initialLinkName), setTimeout(function () {
+	            _this.setState({
+	                status: 10
+	            });
+	        }, 3000);
+	
+	        console.log(props);
+	
+	        return _this;
 	    }
 	
 	    _createClass(Home, [{
+	        key: "shouldComponentUpdate",
+	        value: function shouldComponentUpdate() {
+	            return true;
+	        }
+	    }, {
+	        key: "componentWillMount",
+	        value: function componentWillMount() {
+	            console.log("Component will Mount");
+	        }
+	    }, {
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            console.log("Component did mount!");
+	        }
+	    }, {
+	        key: "componentWillReceiveProps",
+	        value: function componentWillReceiveProps(nextProps) {
+	            console.log("Compnent will props", nextProps);
+	        }
+	    }, {
+	        key: "onMakeOlder",
+	        value: function onMakeOlder() {
+	            this.setState({
+	                name: this.state.name = 'Isabel',
+	                age: this.state.age + 3,
+	                name_user: this.state.name_user = 'Felipe',
+	                hobbies: this.state.hobbies.add = [1, 2, 3, 4, 5],
+	                status: this.state.status += 3
+	            });
+	        }
+	    }, {
+	        key: "onChangeLink",
+	        value: function onChangeLink() {
+	            this.props.changeLink(this.state.homeLink);
+	        }
+	    }, {
+	        key: "onHandleChange",
+	        value: function onHandleChange(event) {
+	            this.setState({
+	                homeLink: event.target.value
+	            });
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
+	            var _this2 = this;
+	
 	            return _react2.default.createElement(
 	                "div",
 	                null,
 	                _react2.default.createElement(
 	                    "p",
 	                    null,
-	                    " In a new Component !"
-	                )
+	                    " Your name is ",
+	                    this.state.name,
+	                    ", yout age is ",
+	                    this.state.age
+	                ),
+	                _react2.default.createElement(
+	                    "p",
+	                    null,
+	                    " User Object => Name : ",
+	                    this.state.name_user
+	                ),
+	                _react2.default.createElement(
+	                    "p",
+	                    null,
+	                    " Status : ",
+	                    this.state.status
+	                ),
+	                _react2.default.createElement(
+	                    "ul",
+	                    null,
+	                    this.state.hobbies.map(function (data, k) {
+	                        return _react2.default.createElement(
+	                            "li",
+	                            { key: k },
+	                            " ",
+	                            data,
+	                            " "
+	                        );
+	                    })
+	                ),
+	                _react2.default.createElement(
+	                    "button",
+	                    { onClick: function onClick() {
+	                            return _this2.onMakeOlder();
+	                        }, className: "btn btn-primary" },
+	                    " Make me older! "
+	                ),
+	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement(
+	                    "button",
+	                    { onClick: this.props.greet, className: "btn btn-danger" },
+	                    " Greet "
+	                ),
+	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement("input", { type: "text", value: this.props.homeLink, onChange: function onChange(event) {
+	                        return _this2.onHandleChange(event);
+	                    } }),
+	                _react2.default.createElement(
+	                    "button",
+	                    { onClick: function onClick() {
+	                            return _this2.onChangeLink();
+	                        }, className: "btn btn-danger" },
+	                    " Change header link"
+	                ),
+	                _react2.default.createElement("hr", null)
 	            );
 	        }
 	    }]);
 	
 	    return Home;
 	}(_react2.default.Component);
+	
+	Home.PropTypes = {
+	    name: _react2.default.PropTypes.string,
+	    age: _react2.default.PropTypes.number,
+	    status: _react2.default.PropTypes.number,
+	    hobbies: _react2.default.PropTypes.array,
+	    greet: _react2.default.PropTypes.func,
+	    initialLink: _react2.default.PropTypes.string
+	};
+
+/***/ },
+/* 174 */
+/*!*************************************!*\
+  !*** ./src/app/components/Aside.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.Aside = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Aside = exports.Aside = function (_React$Component) {
+	    _inherits(Aside, _React$Component);
+	
+	    function Aside(props) {
+	        _classCallCheck(this, Aside);
+	
+	        var _this = _possibleConstructorReturn(this, (Aside.__proto__ || Object.getPrototypeOf(Aside)).call(this));
+	
+	        _this.state = {
+	            btnName: props.btnName
+	        };
+	        return _this;
+	    }
+	
+	    _createClass(Aside, [{
+	        key: "changeBtnName",
+	        value: function changeBtnName() {
+	            this.setState({
+	                btnName: this.state.btnName = "My new ASIDE name"
+	            });
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            return _react2.default.createElement(
+	                "aside",
+	                null,
+	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement(
+	                    "button",
+	                    { onClick: function onClick() {
+	                            return _this2.changeBtnName();
+	                        }, className: "btn btn-primary" },
+	                    this.state.btnName
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Aside;
+	}(_react2.default.Component);
+	
+	Aside.propTypes = {
+	    action: _react2.default.PropTypes.func
+	};
 
 /***/ }
 /******/ ]);
